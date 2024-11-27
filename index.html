@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Select Location</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Select Your Location</h1>
+    <form id="locationForm">
+      <label for="locationSelect">Choose a Location:</label>
+      <select id="locationSelect" required>
+        <option value="" disabled selected>Select Location</option>
+        <option value="kolathur">Kolathur</option>
+        <option value="tambaram">Tambaram</option>
+        <option value="pollachi">Pollachi</option>
+        <option value="coimbatore">Coimbatore</option>
+        <option value="tiruppur">Tiruppur</option>
+      </select>
+      <button type="submit">Go to Payment Page</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById("locationForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const location = document.getElementById("locationSelect").value;
+
+      if (!location) {
+        alert("Please select a location!");
+        return;
+      }
+
+      // Navigate to the payment page for the selected location
+      window.location.href = `${location}.php`;
+    });
+  </script>
+</body>
+</html>

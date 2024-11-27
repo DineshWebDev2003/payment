@@ -1,0 +1,72 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coimbatore - Fees Payment</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Pay Fees - Coimbatore</h1>
+    <div class="qr-section">
+      <h3>Scan the QR Code or Use UPI ID</h3>
+      <img id="qrCode" src="coimbatore-qr.png" alt="QR Code" style="max-width: 200px;">
+      <p><strong>UPI ID:</strong> coimbatore@upi</p>
+      <button onclick="copyUPI()">Copy UPI ID</button>
+      <button onclick="downloadQRCode()">Download QR Code</button>
+    </div>
+
+    <form id="paymentForm" action="" method="POST" enctype="multipart/form-data">
+      <!-- Read-only Branch Name -->
+      <div>
+        <label for="branch">Branch Name:</label>
+        <input type="text" id="branch" value="coimbatore" readonly>
+        <input type="hidden" name="branch" value="coimbatore">
+      </div>
+
+      <!-- Transaction ID Field -->
+      <div>
+        <label for="transactionId">Transaction ID:</label>
+        <input type="text" id="transactionId" name="transactionId" placeholder="Enter Transaction ID" required>
+      </div>
+
+      <!-- Student ID Field -->
+      <div>
+        <label for="studentId">Student ID:</label>
+        <input type="text" id="studentId" name="studentId" placeholder="Enter Student ID" required>
+      </div>
+
+      <!-- Proof Image Upload -->
+      <div>
+        <label for="proofImage">Upload Proof of Payment:</label>
+        <input type="file" id="proofImage" name="proofImage" accept="image/*" required>
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <script>
+    // Copy UPI ID to clipboard
+    function copyUPI() {
+      const upiId = "coimbatore@upi";
+      navigator.clipboard.writeText(upiId).then(() => {
+        alert("UPI ID copied to clipboard!");
+      });
+    }
+
+    // Download the QR code
+    function downloadQRCode() {
+      const qrCode = document.getElementById("qrCode").src;
+      const link = document.createElement("a");
+      link.href = qrCode;
+      link.download = "coimbatore-qr.png";
+      link.click();
+    }
+  </script>
+</body>
+</html>
